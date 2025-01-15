@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CitiesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\CitiesMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,6 +17,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/weather-cast', [CitiesController::class, 'getAllCities'])->name('getAllCities');
 });
+
+Route::middleware(['auth', CitiesMiddleware::class ])->prefix("admin")->group(function(){
+
+    Route::view('/add-city', 'addCity')->name('addCity');
+    Route::post('/add-city-post', [CitiesController::class, 'addNewCity'])->name('addNewCity');
+    Route::get('/edit-city/{city}', [CitiesController::class, 'viewSingleCity'])->name('editCity');
+    Route::post('/edit-city-post/{city}', [CitiesController::class, 'update'])->name('editCityToBase');
+    Route::get('/delete-city/{city}', [CitiesController::class, 'delete'])->name('deleteCity');
+
+});
+
+
 
 require __DIR__.'/auth.php';

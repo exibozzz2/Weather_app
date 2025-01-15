@@ -1,0 +1,76 @@
+
+
+
+body {
+    background-color: #e5e7eb;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+.bg-nav {
+    background-color: #0a3594;
+}
+
+.bg-custom {
+    background-color: #d7aa72;
+}
+
+.border-custom {
+    border-radius: 1rem;
+
+}
+
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+
+
+.bg-img {
+    background-image: url("../Images/weather_background.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 30rem;
+    width: 100%;
+}
+
+.bg-img-2 {
+    background-image: url("../Images/weather_background.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+}
+
+.h-card {
+    height: 200px;
+}
+
+.card {
+    transition: 0.4s ease;
+}
+
+.card:hover {
+    transform: rotate(5deg);
+}
+
+.sun {
+
+    top: 0;
+    right: 5px;
+}
+
+
+
+
+
+
