@@ -11,12 +11,10 @@ class CitiesMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        $role = Auth::user()->role;
 
-        if($role != "admin") {
-            return redirect("/register");
-        }
 
-        return $next($request);
+        return Auth::user()->role !== 'admin' ?
+
+            redirect('/register') : $next($request);
     }
 }
