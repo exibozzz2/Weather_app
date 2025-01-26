@@ -47,7 +47,7 @@ class CitiesController extends Controller
         $city->maximum = $request->get('maximum');
         $city->save();
 
-        return redirect("/weather-cast");
+        return redirect("/");
 
     }
 

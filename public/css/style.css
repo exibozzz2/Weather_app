@@ -11,16 +11,26 @@ html {
 
 
 .bg-nav {
-    background-color: #0a3594;
+    background: rgb(35,132,226);
+    background: linear-gradient(81deg, rgba(35,132,226,1) 12%, rgba(71,221,211,1) 100%);
 }
 
 .bg-custom {
     background-color: #d7aa72;
 }
 
+.bg-custom-2 {
+    background: rgb(25,131,227);
+    background: linear-gradient(81deg, rgba(25,131,227,1) 51%, rgba(26,145,233,1) 72%);
+}
+
+.bg-card {
+    background: rgb(22,167,209);
+    background: linear-gradient(81deg, rgba(22,167,209,0.37298669467787116) 12%, rgba(71,221,211,1) 95%);
+}
+
 .border-custom {
     border-radius: 1rem;
-
 }
 
 .absolute {
@@ -56,18 +66,49 @@ html {
 }
 
 .card {
-    transition: 0.4s ease;
+
 }
 
-.card:hover {
-    transform: rotate(5deg);
-}
+
+/*
+    Weather Icons
+*/
 
 .sun {
 
     top: 0;
     right: 5px;
 }
+
+.fog {
+    top: 0;
+    right: 4px;
+
+}
+
+.snow {
+
+    top: 0;
+    right: 5px;
+}
+.rain {
+
+    top: 0;
+    right: 5px;
+}
+.cloudy {
+
+    top: 1;
+    right: 5px;
+}
+
+.storm {
+
+    top: 0;
+    right: 5px;
+}
+
+
 
 
 

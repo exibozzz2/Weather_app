@@ -21,5 +21,15 @@
 
     @include("footer")
 
+
+    <script src="/js/vanilla-tilt.min.js"></script>
+    <script>
+        VanillaTilt.init(document.querySelectorAll(".card-1"),{
+            glare:true,
+            reverse: true,
+            "max-glare": 0.2
+        });
+    </script>
+
 </body>
 </html>
