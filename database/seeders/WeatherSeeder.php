@@ -21,6 +21,13 @@ class WeatherSeeder extends Seeder
             return;
         }
 
+        $checkCity = CitiesModel::where(['city' => $city])->first();
+
+        if($checkCity instanceof CitiesModel) {
+            $this->command->getOutput()->error("This city already exists.");
+            return;
+        }
+
         $weather = $this->command->getOutput()->ask("How is the weather in $city?");
         if($weather === null) {
             $this->command->getOutput()->error("Empty input weather...");
