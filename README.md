@@ -1,2 +1,4 @@
 # Laravel 12
-# Create Multiple Forecast migration
+# Create Forecast Model
+# Connect Model with Forecast Table
+# Define fillable 
