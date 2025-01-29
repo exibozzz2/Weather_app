@@ -1,4 +1,3 @@
 # Laravel 12
-# Create Forecast Model
-# Connect Model with Forecast Table
-# Define fillable 
+# Add new field in Forecast Table
+# Connect Cities -> with new field
