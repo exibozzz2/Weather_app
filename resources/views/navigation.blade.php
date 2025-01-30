@@ -6,9 +6,9 @@
     <div class="col-4">
         <a href="{{route("getAllCities")}}" class="text-decoration-none text-white"><h3>T O P | W E A T H E R</h3></a>
     </div>
-    <div class="col-8 d-flex justify-content-around align-items-center">
-        <a href="{{ route("getAllCities") }}" class="text-decoration-none text-white">Europe Cities</a>
+        <a href="{{ route("getAllCities") }}" class="text-decoration-none text-white">All Cities</a>
         <a href="{{ route("addCity") }}" class="text-decoration-none text-white">Add City</a>
-    </div>
+        <a href="{{ route("forecasts") }}" class="text-decoration-none text-white">Forecast</a>
+        <a href="{{ route("currentForecast") }}" class="text-decoration-none text-white">Today</a>
 
 </div>
