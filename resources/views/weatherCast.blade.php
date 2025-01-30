@@ -8,10 +8,11 @@
 @section("content")
 
     <div class="d-flex flex-column col-12 justify-content-center align-items-center bg-img" style="height: 30vh">
-        <h1 class="text-white mb-5">{{date("h:i:s")}}</h1>
+
         <hr style="background-color: black;">
         <h2 class="text-white">{{date("F")}}, {{date("j")}} </h2>
         <h2 class="text-success">{{date("l")}}</h2>
+        <h1 class="text-white mt-5">{{date("h:i:s")}}</h1>
     </div>
 
     <div class="col-10 d-flex justify-content-center align-items-center flex-wrap mt-5 bg-img-2" >
@@ -23,8 +24,8 @@
         @foreach($cities as $city)
             <div class="card col-4 text-white bg-card mb-3 border-custom border-dark relative p-2 m-3"  data-tilt>
                 <div class="d-flex justify-content align-items-center flex-wrap">
-                    <p class="card-header">{{$city->city}}</p>
-                    <p class="card-header">{{$city->current}}&#8451; / &#8457;</p>
+                    <h1 class="card-header">{{$city->city}}</h1>
+                    <h4 class="card-header">{{$city->current}}&#8451; / &#8457;</h4>
                 </div>
 
                 @if($city->weather == "Sunny")
@@ -47,7 +48,7 @@
 
 
                 <div class="card-body ">
-                    <h4 class="card-title">{{$city->weather}}</h4>
+                    <h3 class="card-title">{{$city->weather}}</h3>
                     <p>{{$city->minimum}} / {{$city->maximum}} </p>
                 </div>
                 <div class="d-flex col-12 justify-content-between align-items-center flex-wrap text-white ">
