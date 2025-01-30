@@ -15,15 +15,20 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/', [CitiesController::class, 'getAllCities'])->name('getAllCities');
+    Route::get('/forecasts', [\App\Http\Controllers\ForecastController::class, 'index'])->name('forecasts');
+    Route::get('/currentForecast',[\App\Http\Controllers\ForecastController::class, 'index'])->name('currentForecast');
+
 });
 
 Route::middleware(['auth', CitiesMiddleware::class ])->prefix("admin")->group(function(){
+
 
     Route::view('/add-city', 'addCity')->name('addCity');
     Route::post('/add-city-post', [CitiesController::class, 'addNewCity'])->name('addNewCity');
     Route::get('/edit-city/{city}', [CitiesController::class, 'viewSingleCity'])->name('editCity');
     Route::post('/edit-city-post/{city}', [CitiesController::class, 'update'])->name('editCityToBase');
     Route::get('/delete-city/{city}', [CitiesController::class, 'delete'])->name('deleteCity');
+
 
 });
 
