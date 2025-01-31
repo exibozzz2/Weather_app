@@ -9,6 +9,6 @@ class ForecastModel extends Model
     protected $table = "forecast";
 
     protected $fillable = [
-        'city_id', 'temperature', 'forecast_date',
+        'city_id', 'condition', 'temperature', 'forecast_date',
     ];
 }
