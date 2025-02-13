@@ -15,14 +15,14 @@ class MultipleDaysSeeder extends Seeder
      */
     public function run(): void
     {
-        $cities = CitiesModel::all();
 
-        foreach ($cities as $city) {
+        foreach (CitiesModel::all() as $city) {
             for($i = 0; $i < 5; $i++) {
-                ForecastModel::create([
-                   'city_id' => $city->id,
-                   'temperature' => rand(1, 20),
-                   'forecast_date' => Carbon::now()->addDays(rand(1, 30)),
+                ForecastModel::create ([
+                    'city_id' => $city->id,
+                    'temperature' => rand(1, 20),
+                    'forecast_date' => Carbon::now()->addDays(rand(1, 30)),
+
                 ]);
             }
         }
