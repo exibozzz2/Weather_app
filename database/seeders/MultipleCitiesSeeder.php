@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Helpers\WeatherHelper;
 use App\Models\CitiesModel;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
 
 class MultipleCitiesSeeder extends Seeder
 {
@@ -21,7 +23,7 @@ class MultipleCitiesSeeder extends Seeder
 
                 CitiesModel::create([
                     'city' => $faker->city,
-                    'weather' => $faker->word,
+                    'weather' => WeatherHelper::generateRandomCondition(),
                     'current' => rand(9, 26),
                     'minimum' => rand(3, 12),
                     'maximum' => rand(12, 30),
