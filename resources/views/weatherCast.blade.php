@@ -29,21 +29,29 @@
                 </div>
 
                 @if($city->weather == "Sunny")
-                    <img class="sun col-3 absolute" src="{{url('/images/sun.png')}}" alt="Image"/>
-                @elseif($city->weather == "Fog")
-                    <img class="fog col-3 absolute" src="{{url('/images/fog.png')}}" alt="Image"/>
-                @elseif($city->weather == "Clear")
-                    <img class="sun col-3 absolute" src="{{url('/images/sun.png')}}" alt="Image"/>
+                    <img class="icon col-2 absolute" src="{{url('/images/sun.png')}}" alt="Image"/>
                 @elseif($city->weather == "Sun")
-                    <img class="sun col-3 absolute" src="{{url('/images/sun.png')}}" alt="Image"/>
+                    <img class="icon col-2 absolute" src="{{url('/images/sun.png')}}" alt="Image"/>
+                @elseif($city->weather == "Clear")
+                    <img class="icon col-2 absolute" src="{{url('/images/sun.png')}}" alt="Image"/>
+                @elseif($city->weather == "Fog")
+                    <img class="icon col-2 absolute" src="{{url('/images/fog.png')}}" alt="Image"/>
                 @elseif($city->weather == "Cloudy")
-                    <img class="cloudy col-3 absolute" src="{{url('/images/cloudy.png')}}" alt="Image"/>
+                    <img class="icon col-2 absolute" src="{{url('/images/cloudy.png')}}" alt="Image"/>
+                @elseif($city->weather == "Cloud")
+                    <img class="icon col-2 absolute" src="{{url('/images/cloud.png')}}" alt="Image"/>
+                @elseif($city->weather == "Rain")
+                    <img class="icon col-2 absolute" src="{{url('/images/rain.png')}}" alt="Image"/>
+                @elseif($city->weather == "Rainy")
+                    <img class="icon col-2 absolute" src="{{url('/images/rainy.png')}}" alt="Image"/>
                 @elseif($city->weather == "Snow")
-                    <img class="snow col-2 absolute" src="{{url('/images/snow.png')}}" alt="Image"/>
+                    <img class="icon col-2 absolute" src="{{url('/images/snow.png')}}" alt="Image"/>
+                @elseif($city->weather == "Wind")
+                    <img class="icon col-2 absolute" src="{{url('/images/wind.png')}}" alt="Image"/>
                 @elseif($city->weather == "Storm")
-                    <img class="storm col-3 absolute" src="{{url('/images/storm.png')}}" alt="Image"/>
+                    <img class="icon col-2 absolute" src="{{url('/images/storm.png')}}" alt="Image"/>
                 @else
-                    .
+
                 @endif
 
 
@@ -67,23 +75,6 @@
     <hr>
 
 
-    <div class="container d-flex justify-content-center align-items-center flex-wrap">
-        @foreach($cities as $city)
-            <div class="d-flex flex-column justify-content-center align-items center col-3 h-card bg-info border rounded  border-black m-2">
-                <div class="d-flex flex-column justify-content-center align-items-center bg-nav">
-                    <h3> {{ $city->city }}</h3>
-                    <p>{{ $city->current }}</p>
-                </div>
-                <p>min: {{ $city->minimum }} </p>
-                <p>max: {{ $city->maximum }}</p>
-                <div>
-                    <a class="button">Edit</a>
-                    <a class="button">Delete</a>
-                </div>
-            </div>
-        @endforeach
-
-    </div>
 
 
 @endsection

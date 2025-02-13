@@ -43,7 +43,7 @@ html {
 
 
 .bg-img {
-    background-image: url("../Images/weather_background.jpg");
+    background-image: url("../Images/background.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
@@ -53,7 +53,7 @@ html {
 }
 
 .bg-img-2 {
-    background-image: url("../Images/weather_background.jpg");
+    background-image: url("../Images/background.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
@@ -70,42 +70,9 @@ html {
 }
 
 
-/*
-    Weather Icons
-*/
-
-.sun {
-
-    top: 0;
-    right: 5px;
-}
-
-.fog {
-    top: 0;
-    right: 4px;
-
-}
-
-.snow {
-
-    top: 0;
-    right: 5px;
-}
-.rain {
-
-    top: 0;
-    right: 5px;
-}
-.cloudy {
-
-    top: 1;
-    right: 5px;
-}
-
-.storm {
-
-    top: 0;
-    right: 5px;
+.icon {
+    right: 7px;
+    top: 5px;
 }
 
 
