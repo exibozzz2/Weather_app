@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('forecast', function (Blueprint $table) {
-            $table->id();
-            $table->float("temperature");
-            $table->date("forecast_date");
-            $table->timestamps();
+        Schema::table('forecasts', function (Blueprint $table) {
+            $table->string("condition");
+
+            $table->foreign("condition")
+                ->references("weather_id")
+                ->on("cities");
         });
     }
 
@@ -24,6 +25,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('forecast');
+        Schema::table('forecasts', function (Blueprint $table) {
+            //
+        });
     }
 };
