@@ -9,7 +9,7 @@ class WeatherHelper {
     public static function generateRandomCondition (){
 
 
-        $weather = ['Sun', 'Fog', 'Rainy', 'Rain', 'Sunny', 'Storm', 'Cloudy', 'Wind'];
+        $weather = ['Sun', 'Sunny', 'Clear', 'Fog', 'Rainy', 'Rain', 'Storm', 'Cloud', 'Cloudy', 'Wind'];
         return $weather[array_rand($weather)];
     }
 }
