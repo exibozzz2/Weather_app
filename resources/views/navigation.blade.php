@@ -8,7 +8,7 @@
     </div>
         <a href="{{ route("getAllCities") }}" class="text-decoration-none text-white">All Cities</a>
         <a href="{{ route("addCity") }}" class="text-decoration-none text-white">Add City</a>
-        <a href="{{ route("forecasts") }}" class="text-decoration-none text-white">Forecast</a>
-        <a href="{{ route("currentForecast") }}" class="text-decoration-none text-white">Today</a>
+        <a href="{{ route("forecasts") }}" class="text-decoration-none text-white">Next 5 days</a>
+        <a href="{{ route("currentForecast") }}" class="text-decoration-none text-white">Current</a>
 
 </div>
