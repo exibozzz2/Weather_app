@@ -30,7 +30,7 @@ class CitiesController extends Controller
                 'maximum' => $request->maximum,
             ]);
 
-        return redirect("/weather-cast");
+        return redirect("/");
     }
 
 
