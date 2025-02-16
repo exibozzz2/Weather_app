@@ -35,7 +35,7 @@ class CitiesController extends Controller
 
 
     public function viewSingleCity( CitiesModel $city) {
-        return view('editCity', compact('city'));
+        return view('/admin/editCity', compact('city'));
     }
 
     public function update(Request $request, CitiesModel $city ) {
