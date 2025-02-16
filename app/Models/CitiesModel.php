@@ -15,4 +15,8 @@ class CitiesModel extends Model
         'maximum',
 
     ];
+
+    public function city() {
+        return $this->hasMany(ForecastModel::class, 'city_id', 'id');
+    }
 }
