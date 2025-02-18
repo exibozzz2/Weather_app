@@ -15,6 +15,6 @@ class CitiesMiddleware
 
         return Auth::user()->role !== 'admin' ?
 
-            redirect('/register') : $next($request);
+            redirect('/error') : $next($request);
     }
 }
