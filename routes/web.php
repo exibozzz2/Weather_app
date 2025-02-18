@@ -17,7 +17,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/', [CitiesController::class, 'getAllCities'])->name('getAllCities');
     Route::get('/forecasts', [ForecastController::class, 'index'])->name('forecasts');
-    Route::get('/currentForecast', [\App\Http\Controllers\TodayForecastController::class, 'index'])->name('currentForecast');
+    Route::get('/currentForecast', [\App\Http\Controllers\TodayForecastController::class, 'index'])->name('todayForecast');
+    Route::get('/forecasts/{city:city}', [ForecastController::class, 'singleCity'])->name('singleCityForecast');
 
 });
 
@@ -28,6 +29,7 @@ Route::middleware(['auth', CitiesMiddleware::class ])->prefix("admin")->group(fu
     Route::get('/edit-city/{city}', [CitiesController::class, 'viewSingleCity'])->name('editCity');
     Route::post('/edit-city-post/{city}', [CitiesController::class, 'update'])->name('editCityToBase');
     Route::get('/delete-city/{city}', [CitiesController::class, 'delete'])->name('deleteCity');
+
 
 });
 
