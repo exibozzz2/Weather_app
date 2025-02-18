@@ -11,4 +11,6 @@ class ForecastModel extends Model
     protected $fillable = [
         'city_id', 'temperature', 'forecast_date',
     ];
+
+    const DAY = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" ];
 }
