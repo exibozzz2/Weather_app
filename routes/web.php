@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CitiesController;
+use App\Http\Controllers\CreateForecastController;
 use App\Http\Controllers\ForecastController;
 use App\Http\Controllers\MenageCitiesController;
 use App\Http\Controllers\ProfileController;
@@ -32,8 +33,18 @@ Route::middleware(['auth', CitiesMiddleware::class ])->prefix("admin")->group(fu
     Route::get('/edit-city/{city}', [CitiesController::class, 'viewSingleCity'])->name('editCity');
     Route::post('/edit-city-post/{city}', [CitiesController::class, 'update'])->name('editCityToBase');
     Route::get('/delete-city/{city}', [CitiesController::class, 'delete'])->name('deleteCity');
-    Route::view('/menage-cities', '/admin/menageCities')->name("menageCities");
+
+    // Menage Temperature
+    Route::view('/menage-cities', '/admin/menageTemperature')->name("menageCities");
     Route::post('/menage-cities/update', [MenageCitiesController::class, 'updateTemperature'])->name('updateTemperature');
+
+    // Add new Forecast
+
+    Route::view('/add-forecast', '/admin/addNewForecast')->name('addForecast');
+    Route::post('/add-forecast/create', [CreateForecastController::class, 'createForecast'])->name('createForecast');
+
+
+
 
 
 

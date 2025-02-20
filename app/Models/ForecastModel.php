@@ -9,7 +9,7 @@ class ForecastModel extends Model
     protected $table = "forecasts";
 
     protected $fillable = [
-        'city_id', 'temperature', 'forecast_date',
+        'city_id', 'temperature', 'forecast_date', 'condition',
     ];
 
     const DAY = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" ];

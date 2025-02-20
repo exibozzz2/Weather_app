@@ -13,10 +13,11 @@ class CitiesModel extends Model
         'current',
         'minimum',
         'maximum',
-
     ];
 
-    public function city() {
+    const CONDITIONS = ["Sun", "Sunny", "Clear", "Fog", "Rainy", "Rain", "Storm", "Cloud", "Cloudy", "Wind"];
+
+    public function forecasts() {
         return $this->hasMany(ForecastModel::class, 'city_id', 'id');
     }
 }
