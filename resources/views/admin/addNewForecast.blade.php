@@ -36,7 +36,7 @@
                     <p><b>{{$singleCity->city}}</b></p>
                     <ul>
                         @foreach($singleCity->forecasts as $forecast)
-                            <li>{{$forecast->forecast_date}} -> {{$forecast->temperature}} &#8451;</li>
+                            <li>{{$forecast->forecast_date->setTimezone('Europe/Belgrade')->format('F d')}} -> {{$forecast->temperature}} &#8451;</li>
 
                         @endforeach
 

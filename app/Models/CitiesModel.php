@@ -18,6 +18,6 @@ class CitiesModel extends Model
     const CONDITIONS = ["Sun", "Sunny", "Clear", "Fog", "Rainy", "Rain", "Storm", "Cloud", "Cloudy", "Wind"];
 
     public function forecasts() {
-        return $this->hasMany(ForecastModel::class, 'city_id', 'id');
+        return $this->hasMany(ForecastModel::class, 'city_id', 'id')->orderBy("forecast_date");
     }
 }
