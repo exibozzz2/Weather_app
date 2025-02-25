@@ -15,7 +15,7 @@ class CitiesModel extends Model
         'maximum',
     ];
 
-    const CONDITIONS = ["Sun", "Sunny", "Clear", "Fog", "Rainy", "Rain", "Storm", "Cloud", "Cloudy", "Wind"];
+    const CONDITIONS = ["Sun", "Sunny", "Clear", "Fog", "Rainy", "Rain", "Storm", "Cloud", "Cloudy", "Wind", "Snow"];
 
     public function forecasts() {
         return $this->hasMany(ForecastModel::class, 'city_id', 'id')->orderBy("forecast_date");
