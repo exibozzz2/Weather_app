@@ -36,16 +36,12 @@
                     <p><b>{{$singleCity->city}}</b></p>
                     <ul>
                         @foreach($singleCity->forecasts as $forecast)
-                            <li>{{$forecast->forecast_date->setTimezone('Europe/Belgrade')->format('F d')}} -> {{$forecast->temperature}} &#8451;</li>
-
+                            <?php $color = \App\Helpers\ColorHelper::getColorByTemperature($forecast->temperature)?>
+                            <li>{{$forecast->forecast_date->setTimezone('Europe/Belgrade')->format('F d l')}} -> <span style="color: {{$color}};">{{$forecast->temperature}} &#8451;</span></li>
                         @endforeach
-
-</ul>
-
-
-</div>
-
-@endforeach
+                    </ul>
+                </div>
+            @endforeach
 
 
 
