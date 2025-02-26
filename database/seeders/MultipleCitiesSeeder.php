@@ -21,16 +21,25 @@ class MultipleCitiesSeeder extends Seeder
 
             for($i = 0; $i < $howManyCities; $i++) {
 
-                CitiesModel::create([
-                    'city' => $faker->city,
-                    'weather' => WeatherHelper::generateRandomCondition(),
-                    'current' => rand(9, 26),
-                    'minimum' => rand(3, 12),
-                    'maximum' => rand(12, 30),
-                    ]);
 
-                $this->command->getOutput()->progressAdvance(1);
-            }
+
+                $city = $faker->city;
+
+                $cityExists = CitiesModel::where(['city' => $city])->first();
+                if($cityExists !== null) {
+                    $this->command->getOutput()->error("City already exists");
+                    continue;
+                }
+
+                    CitiesModel::create([
+                        'city' => $city,
+                        'weather' => WeatherHelper::generateRandomCondition(),
+                        'current' => rand(9, 20),
+                        'minimum' => rand(3, 12),
+                        'maximum' => rand(20, 30),
+                    ]);
+                    $this->command->getOutput()->progressAdvance(1);
+                }
 
         $this->command->getOutput()->progressFinish();
 
