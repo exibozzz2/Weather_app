@@ -12,11 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('forecasts', function (Blueprint $table) {
-            $table->string("condition");
-
-            $table->foreign("condition")
-                ->references("weather_id")
-                ->on("cities");
+            $table->string("condition", 255); // Ensure the same length as "weather" in "cities"
+            $table->foreign("condition")->references("weather")->on("cities")->onDelete('cascade');
         });
     }
 
@@ -26,7 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('forecasts', function (Blueprint $table) {
-            //
+            $table->dropForeign(['condition']); // Drop foreign key first
+            $table->dropColumn('condition'); // Then drop the column
         });
     }
 };
