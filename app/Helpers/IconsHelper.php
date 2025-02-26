@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http;
+namespace App\Helpers;
 
 class IconsHelper
 {
+
+
+
     public static function getIconByCondition($weather)
     {
         $icons = [
@@ -23,3 +26,5 @@ class IconsHelper
         return isset($icons[$weather]) ? url('/images/' . $icons[$weather]) : null;
     }
 }
+
+//$url = self::WEATHER_ICONS[$type] //$url = self::WEATHER_ICONS[$type]
