@@ -12,6 +12,17 @@
         <a href="{{ route("addCity") }}" class="text-decoration-none text-white">Add City</a>
         <a href="{{ route("addForecast") }}" class="text-decoration-none text-white">Add Forecast</a>
         <a href="{{ route("menageCities") }}" class="text-decoration-none text-white">Menage Cities</a>
+        <a href="{{ route("searchCities") }}" class="text-decoration-none text-white">Search</a>
+
+    @if(Auth::user()->role == "admin")
+
+        <a href=""> </a>
+        @endif
+
+
+
+
+
 
 
 
