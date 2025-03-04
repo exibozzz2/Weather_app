@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/forecasts', [ForecastController::class, 'index'])->name('forecasts');
     Route::get('/currentForecast', [\App\Http\Controllers\TodayForecastController::class, 'index'])->name('todayForecast');
     Route::get('/forecasts/{city:city}', [ForecastController::class, 'singleCity'])->name('singleCityForecast');
+    Route::view('/search', 'searchCity')->name('searchCities');
 
 });
 
