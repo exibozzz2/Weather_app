@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Helpers\CitiesHelper;
 use App\Helpers\WeatherHelper;
 use App\Models\CitiesModel;
 use Faker\Factory;
@@ -17,13 +18,13 @@ class MultipleCitiesSeeder extends Seeder
         $howManyCities = $this->command->getOutput()->ask("How many cities you want to generate?");
         $this->command->getOutput()->progressStart($howManyCities);
 
-        $faker = Factory::create("SR_RS");
+        $faker = Factory::create("sr_Latn_RS");
 
             for($i = 0; $i < $howManyCities; $i++) {
 
 
 
-                $city = $faker->city;
+                $city = CitiesHelper::getRandomCity();
 
                 $cityExists = CitiesModel::where(['city' => $city])->first();
                 if($cityExists !== null) {
