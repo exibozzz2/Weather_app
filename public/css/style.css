@@ -2,7 +2,7 @@
 
 
 body {
-    background-color: #e5e7eb;
+
 }
 
 html {
@@ -29,8 +29,16 @@ html {
     background: linear-gradient(81deg, rgba(22,167,209,0.37298669467787116) 12%, rgba(71,221,211,1) 95%);
 }
 
+.bg-city {
+    background-color: rgb(168 253 214);
+}
+
 .border-custom {
     border-radius: 1rem;
+}
+
+.nav-rounded {
+    border-radius: 0 0 15px 15px;
 }
 
 .absolute {
@@ -62,6 +70,8 @@ html {
     width: 100%;
 }
 
+
+
 .h-card {
     height: 200px;
 }
@@ -73,6 +83,10 @@ html {
 .hover-card:hover {
     box-shadow: 12px 12px 12px 12px rgba(0,0,0,0.1),
     -10px -10px 20px black;
+}
+
+.li-hover:hover {
+    background: white;
 }
 
 
@@ -96,6 +110,20 @@ html {
 .error-message {
     font-size: 1.5rem;
     margin-bottom: 15px;
+    color: #ec3e47;
+}
+
+.search-icon-right {
+    right: 10px;
+}
+
+.search-icon-left {
+    left: 10px;
+}
+
+.search-button {
+    background: rgb(35,131,18);
+    background: linear-gradient(145deg, rgba(35,131,18,1) 47%, rgba(25,136,35,1) 55%);
 }
 
 
