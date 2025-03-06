@@ -18,8 +18,9 @@ class SearchCitiesController extends Controller
 
         if(count($cities) == 0) {
 
-             return redirect()->back()->with("error", "Not found");                                    // Check if city doesn't exists
+             return redirect()->back()->with("error", "No Results Found.");              // Check if city doesn't exists
         }
+
 
         return view('searchResults', compact('cities'));
     }
