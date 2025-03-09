@@ -121,6 +121,11 @@ html {
     left: 10px;
 }
 
+.search-weather-icon {
+    bottom: 0;
+
+}
+
 .search-button {
     background: rgb(35,131,18);
     background: linear-gradient(145deg, rgba(35,131,18,1) 47%, rgba(25,136,35,1) 55%);
