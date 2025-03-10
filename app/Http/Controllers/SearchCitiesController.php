@@ -14,7 +14,7 @@ class SearchCitiesController extends Controller
         ]);
 
         $cityName = $request->get('search');
-        $cities = CitiesModel::where('city', 'LIKE', "%$cityName%")->get();
+        $cities = CitiesModel::with("todayForecast")->where('city', 'LIKE', "%$cityName%")->get();
 
         if(count($cities) == 0) {
 
