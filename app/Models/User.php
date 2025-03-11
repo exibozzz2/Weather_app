@@ -47,4 +47,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function favourites() {
+        return $this->hasOne(UserFavouritesModel::class, 'user_id', 'id' );
+    }
 }
