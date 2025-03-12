@@ -12,16 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_favourites', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('city_id');
+           $table->id();
+           $table->unsignedBigInteger('user_id');
+           $table->unsignedBigInteger('city_id');
+           $table->timestamps();
 
-            $table->foreign("user_id")
+
+           $table->foreign("user_id")
                 ->references("id")
                 ->on("users");
 
-            $table->foreign("city_id")
+           $table->foreign("city_id")
                 ->references("id")
                 ->on("cities");
+
         });
     }
 
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_cities');
+        //
     }
 };
