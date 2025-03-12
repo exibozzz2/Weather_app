@@ -9,17 +9,21 @@ use Illuminate\Support\Facades\Auth;
 
 class UserFavouritesController extends Controller
 {
-    public function favourites(Request $request, CitiesModel $city) {
-
+    public function favourites(Request $request, $city) {
 
             $user = Auth::user();
-
-
 
             if($user === null)
             {
                 return redirect()->back()->with(['error' => "You need to be logged in."]);
             }
+
+            UserFavouritesModel::create([
+                'user_id' => $user->id,
+                'city_id' => $city,
+            ]);
+
+            return redirect()->back();
 
 
 
