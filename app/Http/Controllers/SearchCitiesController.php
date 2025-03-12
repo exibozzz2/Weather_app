@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CitiesModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SearchCitiesController extends Controller
 {
@@ -14,14 +15,17 @@ class SearchCitiesController extends Controller
         ]);
 
         $cityName = $request->get('search');
-        $cities = CitiesModel::with("todayForecast")->where('city', 'LIKE', "%$cityName%")->get();
+        $cities = CitiesModel::with("todayForecast")->where('city', 'LIKE', "%$cityName%")->get();      // With added to simplify query search only for today (Carbon now in Cities Model)
 
         if(count($cities) == 0) {
 
              return redirect()->back()->with("error", "No Results Found.");              // Check if city doesn't exists
         }
 
+        $userFavourites = Auth::user()->favourites;
+        $userFavourites = $userFavourites->pluck("city_id")->toArray();
 
-        return view('searchResults', compact('cities'));
+
+        return view('searchResults', compact('cities', 'userFavourites'));
     }
 }

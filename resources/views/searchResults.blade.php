@@ -20,9 +20,17 @@
             @foreach($cities as $city)
 
                 <div class="col-5 d-flex justify-content-center align-items-center">
-                    <a class="col-2 btn d-flex justify-content-center align-items-center p-2" href="{{route('favourites', ['city' => $city->id])}}">
-                        <img class="img-fluid" src="images/fav.png" alt="Favourite button"/>
-                    </a>
+
+                    @if(in_array($city->id, $userFavourites))
+                        <a class="col-2 btn d-flex justify-content-center align-items-center p-2" href="{{route('favourites', ['city' => $city->id])}}">
+                            <img class="img-fluid" src="images/bin.png" alt="Favourite button"/>
+                        </a>
+
+                    @else
+                        <a class="col-2 btn d-flex justify-content-center align-items-center p-2" href="{{route('favourites', ['city' => $city->id])}}">
+                            <img class="img-fluid" src="images/fav.png" alt="Favourite button"/>
+                        </a>
+                    @endif
 
                     <a class="d-flex col-10 justify-content-center align-items-center flex-column text-decoration-none " href="{{route("singleCityForecast", ['city' => $city->city])}}">
                         @php
