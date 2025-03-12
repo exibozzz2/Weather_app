@@ -22,8 +22,14 @@ class SearchCitiesController extends Controller
              return redirect()->back()->with("error", "No Results Found.");              // Check if city doesn't exists
         }
 
-        $userFavourites = Auth::user()->favourites;
-        $userFavourites = $userFavourites->pluck("city_id")->toArray();
+        $userFavourites = [];
+        if(Auth::check())
+        {
+            $userFavourites = Auth::user()->favourites;
+            $userFavourites = $userFavourites->pluck("city_id")->toArray();
+        }
+
+
 
 
         return view('searchResults', compact('cities', 'userFavourites'));
