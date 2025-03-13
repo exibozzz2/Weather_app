@@ -9,7 +9,7 @@ use App\Http\Controllers\SearchCitiesController;
 use App\Http\Controllers\TodayForecastController;
 use App\Http\Controllers\UserFavouritesController;
 use App\Http\Middleware\CitiesMiddleware;
-use App\Models\UserFavouritesModel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,7 +24,16 @@ Route::get('/forecasts', [ForecastController::class, 'index'])->name('forecasts'
 Route::get('/currentForecast', [TodayForecastController::class, 'index'])->name('todayForecast');
 Route::get('/forecasts/{city:city}', [ForecastController::class, 'singleCity'])->name('singleCityForecast');
 // Search routes
-Route::view('/search', 'searchCity')->name('searchCities');
+Route::get('/search', function() {
+    $userFavourites = [];
+    $user = Auth::user();
+    if($user !== null) {
+        $userFavourites = \App\Models\UserFavouritesModel::where(['user_id' => $user->id])->get();
+    }
+
+    return view('searchCity', compact('userFavourites'));
+})->name('searchCities');
+
 Route::get('/search-cities', [SearchCitiesController::class, 'searchCities'])->name('searchCitiesGet');
 Route::view('/search-results', 'searchResults')->name('searchResults');
 Route::view('/error', 'error')->name('error');
