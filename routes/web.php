@@ -9,6 +9,7 @@ use App\Http\Controllers\SearchCitiesController;
 use App\Http\Controllers\TodayForecastController;
 use App\Http\Controllers\UserFavouritesController;
 use App\Http\Middleware\CitiesMiddleware;
+use App\Models\UserFavouritesModel;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,13 +28,14 @@ Route::view('/search', 'searchCity')->name('searchCities');
 Route::get('/search-cities', [SearchCitiesController::class, 'searchCities'])->name('searchCitiesGet');
 Route::view('/search-results', 'searchResults')->name('searchResults');
 Route::view('/error', 'error')->name('error');
+Route::get('/favourites/{city}', [UserFavouritesController::class, 'favourites'])->name('favourites');
+Route::get('unvafourite/{city}', [UserFavouritesController::class, 'unfavourite'])->name('unfavourite');
 
 // Auth access
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/favourites/{city}', [UserFavouritesController::class, 'favourites'])->name('favourites');
 });
 
 // Admin access

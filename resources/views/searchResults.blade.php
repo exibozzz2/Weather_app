@@ -22,7 +22,7 @@
                 <div class="col-5 d-flex justify-content-center align-items-center">
 
                     @if(in_array($city->id, $userFavourites))
-                        <a class="col-2 btn d-flex justify-content-center align-items-center p-2" href="{{route('favourites', ['city' => $city->id])}}">
+                        <a class="col-2 btn d-flex justify-content-center align-items-center p-2" href="{{route('unfavourite', ['city' => $city->id])}}">
                             <img class="img-fluid" src="images/bin.png" alt="Favourite button"/>
                         </a>
 

@@ -25,10 +25,24 @@ class UserFavouritesController extends Controller
 
             return redirect()->back();
 
+    }
 
+    public function unfavourite(Request $request, $city) {
 
+        $user = Auth::user();
+        if($user === null)
+        {
+            return redirect()->back()->with(['error' => "You need to be logged in."]);
+        }
 
+        $userFavourite = UserFavouritesModel::where([
+            'city_id' => $city,
+            'user_id' => $user->id,
+            ])->first();
 
+        $userFavourite->delete();
+
+        return redirect()->back();
 
     }
 }
