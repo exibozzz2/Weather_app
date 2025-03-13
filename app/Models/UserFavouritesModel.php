@@ -11,4 +11,10 @@ class UserFavouritesModel extends Model
     protected $fillable = [
         'user_id', 'city_id',
     ];
+
+    public function relationToCities()
+    {
+        return $this->hasOne(CitiesModel::class, 'id', 'city_id');
+    }
+
 }
