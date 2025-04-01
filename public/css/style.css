@@ -9,6 +9,10 @@ html {
     scroll-behavior: smooth;
 }
 
+.nav-choice:hover {
+    background: rgb(22,167,209);
+    background: linear-gradient(81deg, rgba(22,167,209,0.37298669467787116) 12%, rgba(71,221,211,1) 95%);
+}
 
 .bg-nav {
     background: rgb(35,132,226);
@@ -122,8 +126,12 @@ html {
 }
 
 .search-weather-icon {
-    bottom: 0;
+    right: 1rem;
+}
 
+.delete-fav-icon {
+    width: 45px;
+    height: 30px;
 }
 
 .search-button {
