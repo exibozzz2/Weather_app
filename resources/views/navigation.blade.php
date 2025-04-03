@@ -13,9 +13,10 @@
     <a href="{{ route("menageCities") }}" class="text-decoration-none text-white">Menage Cities</a>
     <a href="{{ route("searchCities") }}" class="text-decoration-none text-white">Search</a>
 
-    <div class="dropdown">
-        <button class="btn bg-card dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Profile
+    <div class="dropdown border-custom border-black">
+
+        <button class="btn bg-card dropdown-toggle border-custom border-black" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="user-icon" src="images/user2.png" alt="Favourite button"/>
         </button>
         <ul class="dropdown-menu">
             @if(Auth::check())
