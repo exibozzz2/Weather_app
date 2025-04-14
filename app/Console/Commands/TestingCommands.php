@@ -27,19 +27,15 @@ class TestingCommands extends Command
     public function handle()
     {
 
-        $city = $this->argument('city');
 
         $response = Http::get("https://api.weatherapi.com/v1/current.json", [
             'key' => 'd63f27bc7e02432f834234615250804',
-            'q' => $city,
+            'q' => $this->argument('city'),
             'aqi' => 'no',
         ]);
 
 
         $jsonResponse = $response->json();
-
-
-
 
         if(isset($jsonResponse['error'])) {
             $this->output->error("This city doesn't exists.");
