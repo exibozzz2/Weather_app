@@ -35,8 +35,18 @@ class TestingCommands extends Command
             'aqi' => 'no',
         ]);
 
+
         $jsonResponse = $response->json();
-        dd($jsonResponse['current']['condition']['code']);
+
+
+
+
+        if(isset($jsonResponse['error'])) {
+            $this->output->error("This city doesn't exists.");
+            return;
+        }
+
+        dd($jsonResponse['current']['condition']['text']);
 
     }
 }
