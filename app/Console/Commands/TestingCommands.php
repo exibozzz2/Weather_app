@@ -32,6 +32,7 @@ class TestingCommands extends Command
             'key' => 'd63f27bc7e02432f834234615250804',
             'q' => $this->argument('city'),
             'aqi' => 'no',
+            'lang' => 'ru',
         ]);
 
 
