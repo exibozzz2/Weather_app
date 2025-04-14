@@ -12,7 +12,7 @@ class TestingCommands extends Command
      *
      * @var string
      */
-    protected $signature = 'app:testing-commands';
+    protected $signature = 'app:testing-commands{city}';
 
     /**
      * The console command description.
@@ -21,21 +21,22 @@ class TestingCommands extends Command
      */
     protected $description = 'Command description';
 
-    /**
-     * Execute the console command.
-     */
-//    https://api.weatherapi.com/v1/current.json?key=d63f27bc7e02432f834234615250804&q=Barcelona&aqi=no
+
+
+
     public function handle()
     {
 
-        $response = Http::get("https://api.weatherapi.com/v1/current.json?key=d63f27bc7e02432f834234615250804&q=Barcelona&aqi=no", [
+        $city = $this->argument('city');
+
+        $response = Http::get("https://api.weatherapi.com/v1/current.json", [
             'key' => 'd63f27bc7e02432f834234615250804',
-            'q' => 'Barcelona',
+            'q' => $city,
             'aqi' => 'no',
         ]);
 
         $jsonResponse = $response->json();
-        dd($jsonResponse['location']['lat']);
+        dd($jsonResponse['current']['condition']['code']);
 
     }
 }
