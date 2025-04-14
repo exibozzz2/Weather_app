@@ -28,7 +28,7 @@ class TestingCommands extends Command
     {
 
 
-        $response = Http::get("https://api.weatherapi.com/v1/current.json", [
+        $response = Http::get(env("WEATHER_API_URL")."v1/current.json", [
             'key' => env("WEATHER_API_KEY"),
             'q' => $this->argument('city'),
             'aqi' => 'no',
