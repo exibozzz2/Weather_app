@@ -29,7 +29,7 @@ class TestingCommands extends Command
 
 
         $response = Http::get("https://api.weatherapi.com/v1/current.json", [
-            'key' => 'd63f27bc7e02432f834234615250804',
+            'key' => env("WEATHER_API_KEY"),
             'q' => $this->argument('city'),
             'aqi' => 'no',
             'lang' => 'ru',
