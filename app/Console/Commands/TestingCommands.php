@@ -28,37 +28,48 @@ class TestingCommands extends Command
 
     public function handle()
     {
+        $city = $this->argument('city');
 
-        $databaseCity = CitiesModel::where(['city' => $this->argument('city')])->first();
+        $databaseCity = CitiesModel::where(['city' => $city])->first();
 
         $response = Http::get(env("WEATHER_API_URL")."v1/forecast.json", [
             'key' => env("WEATHER_API_KEY"),
-            'q' => $this->argument('city'),
+            'q' => $city,
             'aqi' => 'no',
             'lang' => 'en',
         ]);
 
         $jsonResponse = $response->json();
 
-        // if city doesn't exists
-        if($databaseCity === null) {
-            CitiesModel::create([
-                'city' => $this->argument('city'),
-                'weather' => $jsonResponse['current']['condition']['text'],
-            ]);
-            $this->output->comment("Successfully created new city");
-        }
-
-        if(isset($jsonResponse['error'])) {
-            $this->output->error("This city doesn't exists.");
+        // if api search doesn't exists (argument)
+        if(isset($jsonResponse['error']))
+        {
+            $this->output->error($jsonResponse['error']['message']);
             return;
         }
 
-          $cityId = $databaseCity->id;
-          $temperature = $jsonResponse['current']['temp_c'];
-          $forecastDate = $jsonResponse['forecast']['forecastday']['0']['date'];
-          $condition = $jsonResponse['current']['condition']['text'];
-          $possibility = $jsonResponse['forecast']['forecastday']['0']['day']['daily_will_it_rain'];
+
+        // if city doesn't exists in base
+        if($databaseCity === null) {
+
+            $databaseCity = CitiesModel::create([
+                'city' => $city,
+            ]);
+            $this->output->info("Successfully created new city");
+        }
+
+
+
+
+        $cityName = $city;
+        $cityId = $databaseCity->id;
+        $temperature = $jsonResponse['current']['temp_c'];
+        $minTemperature = $jsonResponse['forecast']['forecastday'][0]['day']['mintemp_c'];
+        $maxTemperature = $jsonResponse['forecast']['forecastday'][0]['day']['maxtemp_c'];
+        $forecastDate = $jsonResponse['forecast']['forecastday']['0']['date'];
+        $condition = $jsonResponse['current']['condition']['text'];
+        $possibility = $jsonResponse['forecast']['forecastday']['0']['day']['daily_chance_of_rain'];
+
 
         $forecast = [
             'city_id' => $cityId,
@@ -70,16 +81,12 @@ class TestingCommands extends Command
 
         if($databaseCity->todayForecast !== null) {
 
-            $this->output->comment("Forecast for today already updated.");
+            $this->output->info("Forecast for today already updated.");
             return;
         }
 
         ForecastModel::create($forecast);
-        $this->output->comment("Successfully created new forecast");
-
-
-
-
+        $this->output->info("Successfully created new forecast");
 
     }
 }
