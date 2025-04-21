@@ -5,11 +5,7 @@ namespace App\Helpers;
 class IconsHelper
 {
 
-
-
-    public static function getIconByCondition($weather)
-    {
-        $icons = [
+    const ICONS    = [
             "Sunny" => "sun.png",
             "Sun" => "sun.png",
             "Clear" => "sun.png",
@@ -23,8 +19,18 @@ class IconsHelper
             "Storm" => "storm.png"
         ];
 
-        return isset($icons[$weather]) ? url('/images/' . $icons[$weather]) : null;
+    public static function getIconByCondition($weather)
+    {
+        if(in_array($weather, self::ICONS)) {
+
+            return self::ICONS[$weather];
+        }
+        else if($weather === null) {
+            return "sun.png";
+        }
+        return "sun.png";
     }
 }
 
-//$url = self::WEATHER_ICONS[$type] //$url = self::WEATHER_ICONS[$type]
+//        return isset($icons[$weather]) ? url('/images/' . $icons[$weather]) : null;
+//        $url = self::WEATHER_ICONS[$type] //$url = self::WEATHER_ICONS[$type]
