@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\CitiesModel;
 use App\Models\ForecastModel;
+use App\Services\WeatherService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
@@ -14,7 +15,7 @@ class TestingCommands extends Command
      *
      * @var string
      */
-    protected $signature = 'app:testing-commands{city}';
+    protected $signature = 'app:testing-commands {city}';
 
     /**
      * The console command description.
@@ -28,18 +29,14 @@ class TestingCommands extends Command
 
     public function handle()
     {
+
         $city = $this->argument('city');
 
         $databaseCity = CitiesModel::where(['city' => $city])->first();
 
-        $response = Http::get(env("WEATHER_API_URL")."v1/forecast.json", [
-            'key' => env("WEATHER_API_KEY"),
-            'q' => $city,
-            'aqi' => 'no',
-            'lang' => 'en',
-        ]);
+        $weatherService = new WeatherService();
 
-        $jsonResponse = $response->json();
+        $jsonResponse = $weatherService->getWeather($city);
 
         // if api search doesn't exists (argument)
         if(isset($jsonResponse['error']))
@@ -48,17 +45,17 @@ class TestingCommands extends Command
             return;
         }
 
+        $condition = $jsonResponse['current']['condition']['text'];
 
         // if city doesn't exists in base
         if($databaseCity === null) {
 
             $databaseCity = CitiesModel::create([
                 'city' => $city,
+                'weather' => $condition,
             ]);
             $this->output->info("Successfully created new city");
         }
-
-
 
 
         $cityName = $city;
@@ -67,7 +64,7 @@ class TestingCommands extends Command
         $minTemperature = $jsonResponse['forecast']['forecastday'][0]['day']['mintemp_c'];
         $maxTemperature = $jsonResponse['forecast']['forecastday'][0]['day']['maxtemp_c'];
         $forecastDate = $jsonResponse['forecast']['forecastday']['0']['date'];
-        $condition = $jsonResponse['current']['condition']['text'];
+
         $possibility = $jsonResponse['forecast']['forecastday']['0']['day']['daily_chance_of_rain'];
 
 
