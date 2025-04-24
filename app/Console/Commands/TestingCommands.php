@@ -58,13 +58,16 @@ class TestingCommands extends Command
         }
 
 
+        $currentForecast = $jsonResponse['forecast']['forecastday'][0]['day'];
+
         $cityName = $city;
         $cityId = $databaseCity->id;
         $temperature = $jsonResponse['current']['temp_c'];
-        $minTemperature = $jsonResponse['forecast']['forecastday'][0]['day']['mintemp_c'];
-        $maxTemperature = $jsonResponse['forecast']['forecastday'][0]['day']['maxtemp_c'];
+        $minTemperature = $currentForecast['mintemp_c'];
+        $maxTemperature = $currentForecast['maxtemp_c'];
+        $sunrise = $jsonResponse['forecast']['forecastday'][0]['astro']['sunrise'];
+        $sunset = $jsonResponse['forecast']['forecastday'][0]['astro']['sunset'];
         $forecastDate = $jsonResponse['forecast']['forecastday']['0']['date'];
-
         $possibility = $jsonResponse['forecast']['forecastday']['0']['day']['daily_chance_of_rain'];
 
 
