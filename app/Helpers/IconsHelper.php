@@ -5,39 +5,89 @@ namespace App\Helpers;
 class IconsHelper
 {
 
-    const ICONS = [
-        "Sunny" => "sun.png",
-        "Sun" => "sun.png",
-        "Clear" => "sun.png",
-        "Fog" => "fog.png",
-        "Cloudy" => "cloudy.png",
-        "Cloud" => "cloud.png",
-        "Rain" => "rain.png",
-        "Rainy" => "rainy.png",
-        "Snow" => "snow.png",
-        "Wind" => "wind.png",
-        "Storm" => "storm.png",
-        "Moderate or heavy rain with thunder" => "rain.png",
-    ];
+
 
     public static function getIconByCondition($weather)
     {
 
-        $icon = match ($weather) {
-            "Sunny" => "sun.png",
-            "Sun" => "sun.png",
-            "Clear" => "sun.png",
-            "Fog" => "fog.png",
-            "Cloudy" => "cloudy.png",
+        $icon = match($weather) {
+
+
+    // Sun
+            "Sunny", "Sun", "Clear", "Overcast" => "sun.png",
+
+    // 🌫️ FOG
+            "Mist", "Fog", "Freezing fog" => "fog.png",
+
+    // 🌧️ RAIN
+            "Rain",
+            "Patchy rain nearby",
+            "Patchy light rain in area with thunder",
+            "Patchy rain possible",
+            "Patchy light drizzle",
+            "Light drizzle",
+            "Freezing drizzle",
+            "Heavy freezing drizzle",
+            "Patchy light rain",
+            "Light rain",
+            "Moderate rain at times",
+            "Moderate rain",
+            "Heavy rain at times",
+            "Heavy rain",
+            "Light freezing rain",
+            "Moderate or heavy freezing rain" => "rain.png",
+
+    // 🌦️ RAINY
+            "Rainy",
+            "Light rain",
+            "Light rain shower",
+            "Moderate or heavy rain shower",
+            "Torrential rain shower" => "rainy.png",
+
+    // ❄️ SNOW
+            "Patchy snow possible",
+            "Patchy sleet possible",
+            "Light sleet",
+            "Moderate or heavy sleet",
+            "Patchy light snow",
+            "Light snow",
+            "Patchy moderate snow",
+            "Moderate snow",
+            "Patchy heavy snow",
+            "Heavy snow",
+            "Ice pellets",
+            "Light sleet showers",
+            "Moderate or heavy sleet showers",
+            "Light snow showers",
+            "Moderate or heavy snow showers",
+            "Light showers of ice pellets",
+            "Moderate or heavy showers of ice pellets" => "snow.png",
+
+    // 💨 WIND
+            "Wind",
+            "Blowing snow",
+            "Blizzard" => "wind.png",
+
+    // 🌩️ STORM
+            "Storm",
+            "Thundery outbreaks possible",
+            "Patchy light rain with thunder",
+            "Moderate or heavy rain with thunder",
+            "Patchy light snow with thunder",
+            "Thundery outbreaks in nearby",
+            "Moderate or heavy snow with thunder" => "storm.png",
+
+    // ☁️ CLOUD
             "Cloud" => "cloud.png",
-            "Rain" => "rain.png",
-            "Rainy" => "rainy.png",
-            "Snow" => "snow.png",
-            "Wind" => "wind.png",
-            "Storm" => "storm.png",
+
+    // 🌥️ CLOUDY
+            "Cloudy",
+            "Partly cloudy" => "cloudy.png",
+
+    // ❓ DEFAULT
             default => "sun.png",
-        };
-        return $icon;
+};
+return $icon;
 
     }
 }
